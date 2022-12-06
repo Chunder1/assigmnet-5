@@ -1,0 +1,76 @@
+StockTicker As screen:
+
+    Ticker As group:
+        Height: =5
+        Width: =5
+        X: =60
+        Y: =60
+        ZIndex: =8
+
+        Rectangle6 As rectangle:
+            Height: =382
+            Width: =358
+            X: =40
+            Y: =87
+            ZIndex: =1
+
+        stockTicker As text:
+            Default: =""
+            HintText: ="Stock Ticker"
+            X: =59
+            Y: =116
+            ZIndex: =2
+
+        Label14 As label:
+            Color: =RGBA(54, 176, 75, 1)
+            Height: =38
+            Text: ="$" & Value(First(collectSP).'Global Quote'.'03. high')
+            Width: =92
+            X: =270
+            Y: =178
+            ZIndex: =3
+
+        Label13 As label:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderThickness: =5
+            Fill: =RGBA(204, 204, 204, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =110
+            Size: =40
+            Text: ="$" & Value(First(collectSP).'Global Quote'.'05. price')
+            Width: =286
+            X: =76
+            Y: =249
+            ZIndex: =4
+
+        Label14_1 As label:
+            Color: =RGBA(255, 0, 0, 1)
+            Height: =38
+            Text: ="$" & Value(First(collectSP).'Global Quote'.'04. low')
+            Width: =92
+            X: =270
+            Y: =211
+            ZIndex: =5
+
+        stockGoButton As button:
+            Fill: =RGBA(0, 0, 0, 1)
+            Height: =74
+            OnSelect: =ClearCollect(collectSP,stockAPI.Run(stockTicker.Text))
+            Text: ="Go"
+            Width: =286
+            X: =76
+            Y: =375
+            ZIndex: =6
+
+        Label15 As label:
+            FontWeight: =FontWeight.Bold
+            Height: =58
+            Italic: =true
+            Size: =45
+            Text: =First(collectSP).'Global Quote'.'01. symbol'
+            Width: =194
+            X: =76
+            Y: =178
+            ZIndex: =7
+

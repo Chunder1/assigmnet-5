@@ -1,0 +1,219 @@
+Stocks As screen:
+    Fill: =RGBA(187, 221, 140, 1)
+
+    Banner6 As rectangle:
+        Fill: =RGBA(179, 179, 179, 1)
+        Height: =84
+        Width: =1366
+        ZIndex: =1
+
+    "Gallery4 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver4.0'":
+        BorderThickness: =5
+        Items: =Table1
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =Min(168, Self.Height - 60)
+        Y: =193
+        ZIndex: =1
+
+        Title5 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.Ticker
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - 104
+            X: =32
+            Y: =16
+            ZIndex: =1
+
+        Subtitle5 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.'Price per share'
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - 104
+            X: =32
+            Y: =Title5.Y + Title5.Height + 2
+            ZIndex: =2
+
+        Body1 As label:
+            Height: =Self.Size * 4
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.'Price per share'
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - 104
+            X: =32
+            Y: =Subtitle5.Y + Subtitle5.Height + 4
+            ZIndex: =3
+
+        NextArrow5 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Height: =60
+            Icon: =Icon.ChevronRight
+            OnSelect: =Select(Parent)
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            TabIndex: =0
+            Tooltip: ="View item details"
+            Width: =60
+            X: =Parent.TemplateWidth - Self.Width - 5
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =4
+
+        Separator5 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
+    HeaderLabel6 As label:
+        Align: =Align.Center
+        Color: =RGBA(39, 67, 125, 1)
+        Font: =Font.'Courier New'
+        FontWeight: =FontWeight.Semibold
+        Height: =84
+        Size: =30
+        Text: ="Stock Portal"
+        Width: =571
+        X: =398
+        ZIndex: =2
+
+    HomeIcon1 As icon.Home:
+        Height: =55
+        Icon: =Icon.Home
+        OnSelect: =Navigate(Home,ScreenTransition.Fade)
+        Width: =54
+        X: =16
+        Y: =14
+        ZIndex: =4
+
+    Label3 As label:
+        Align: =Align.Center
+        Color: =RGBA(39, 67, 125, 1)
+        Font: =Font.'Courier New'
+        FontWeight: =FontWeight.Semibold
+        Height: =71
+        Size: =30
+        Text: ="My Positions"
+        Width: =640
+        Y: =103
+        ZIndex: =5
+
+    Label5 As label:
+        Text: =
+        X: =54
+        Y: =444
+        ZIndex: =7
+
+    Icon2 As icon.Add:
+        BorderThickness: =1
+        Height: =49
+        Icon: =Icon.Add
+        OnSelect: =Navigate(Screen1,ScreenTransition.Fade);NewForm(Form2)
+        Width: =49
+        X: =500
+        Y: =114
+        ZIndex: =8
+
+    Icon4 As icon.Reload:
+        Height: =48
+        Icon: =Icon.Reload
+        OnSelect: =Refresh(Table1)
+        Width: =49
+        X: =1297
+        Y: =14
+        ZIndex: =12
+
+    Ticker_1 As group:
+        Height: =5
+        Width: =5
+        X: =60
+        Y: =60
+        ZIndex: =20
+
+        Rectangle6_1 As rectangle:
+            Height: =548
+            Width: =600
+            X: =717
+            Y: =193
+            ZIndex: =13
+
+        stockTicker_1 As text:
+            Default: =""
+            Height: =58
+            HintText: ="Stock Ticker"
+            Width: =536
+            X: =749
+            Y: =218
+            ZIndex: =14
+
+        Label14_2 As label:
+            Color: =RGBA(54, 176, 75, 1)
+            Height: =54
+            Size: =25
+            Text: ="$" & Value(First(collectSP).'Global Quote'.'03. high')
+            Width: =154
+            X: =1100
+            Y: =297
+            ZIndex: =15
+
+        Label13_1 As label:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderThickness: =5
+            Fill: =RGBA(204, 204, 204, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =158
+            Size: =70
+            Text: ="$" & Value(First(collectSP).'Global Quote'.'05. price')
+            Width: =479
+            X: =775
+            Y: =419
+            ZIndex: =16
+
+        Label14_3 As label:
+            Color: =RGBA(255, 0, 0, 1)
+            Height: =54
+            Size: =25
+            Text: ="$" & Value(First(collectSP).'Global Quote'.'04. low')
+            Width: =154
+            X: =1100
+            Y: =351
+            ZIndex: =17
+
+        stockGoButton_1 As button:
+            Fill: =RGBA(0, 0, 0, 1)
+            Height: =106
+            OnSelect: =ClearCollect(collectSP,stockAPI.Run(stockTicker_1.Text))
+            Text: ="Go"
+            Width: =479
+            X: =777
+            Y: =606
+            ZIndex: =18
+
+        Label15_1 As label:
+            FontWeight: =FontWeight.Bold
+            Height: =105
+            Italic: =true
+            Size: =100
+            Text: =First(collectSP).'Global Quote'.'01. symbol'
+            Width: =325
+            X: =775
+            Y: =295
+            ZIndex: =19
+

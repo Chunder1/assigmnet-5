@@ -1,0 +1,64 @@
+<application xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:service="https://msmanaged-na.azure-apim.net/apim/logicflows" xmlns:siena="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11" siena:serviceId="stockAPI" xmlns="http://wadl.dev.java.net/2009/02">
+  <doc title="stockAPI" />
+  <grammars>
+    <jsonTypes targetNamespace="https://msmanaged-na.azure-apim.net/apim/logicflows" xmlns="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11">
+      <string dtype="hyperlink" name="ManualTriggerInput_HTTP_URI_def" />
+      <object name="ManualTriggerInput">
+        <property name="HTTP_URI" type="string" dtype="hyperlink" />
+      </object>
+      <string name="ResponseActionOutput_Global_ux20_Quote_def_01__ux20_symbol_def" />
+      <string name="ResponseActionOutput_Global_ux20_Quote_def_02__ux20_open_def" />
+      <string name="ResponseActionOutput_Global_ux20_Quote_def_03__ux20_high_def" />
+      <string name="ResponseActionOutput_Global_ux20_Quote_def_04__ux20_low_def" />
+      <string name="ResponseActionOutput_Global_ux20_Quote_def_05__ux20_price_def" />
+      <string name="ResponseActionOutput_Global_ux20_Quote_def_06__ux20_volume_def" />
+      <string name="ResponseActionOutput_Global_ux20_Quote_def_07__ux20_latest_ux20_trading_ux20_day_def" />
+      <string name="ResponseActionOutput_Global_ux20_Quote_def_08__ux20_previous_ux20_close_def" />
+      <string name="ResponseActionOutput_Global_ux20_Quote_def_09__ux20_change_def" />
+      <string name="ResponseActionOutput_Global_ux20_Quote_def_10__ux20_change_ux20_percent_def" />
+      <object name="ResponseActionOutput_Global_ux20_Quote_def">
+        <property name="01. symbol" type="string" />
+        <property name="02. open" type="string" />
+        <property name="03. high" type="string" />
+        <property name="04. low" type="string" />
+        <property name="05. price" type="string" />
+        <property name="06. volume" type="string" />
+        <property name="07. latest trading day" type="string" />
+        <property name="08. previous close" type="string" />
+        <property name="09. change" type="string" />
+        <property name="10. change percent" type="string" />
+      </object>
+      <object name="ResponseActionOutput">
+        <property name="Global Quote" typeRef="ResponseActionOutput_Global_ux20_Quote_def" />
+      </object>
+      <object name="Run_responses_default_def" />
+    </jsonTypes>
+  </grammars>
+  <resources siena:authenticationProviderHref="#PowerAppAuth" base="https://msmanaged-na.azure-apim.net/apim/logicflows">
+    <resource path="/{connectionId}/triggers/manual/run">
+      <param style="template" name="connectionId" type="xs:string" required="true" />
+      <method siena:requiresAuthentication="true" name="POST" id="Run">
+        <doc title="Runs a logic flow trigger." />
+        <request>
+          <param style="query" name="api-version" type="xs:string" required="true" fixed="2015-02-01-preview">
+            <doc title="The api version" />
+          </param>
+          <representation mediaType="application/json">
+            <param style="plain" name="HTTP_URI" path="/HTTP_URI" type="xs:anyURI" siena:dtype="hyperlink" required="true" />
+          </representation>
+        </request>
+        <response>
+          <representation mediaType="application/json" element="service:ResponseActionOutput" />
+        </response>
+      </method>
+    </resource>
+  </resources>
+  <authenticationProviders xmlns="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11">
+    <connectionProvider id="PowerAppAuth" siena:connectionProviderId="logicflows" />
+  </authenticationProviders>
+  <template xmlns="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11">
+    <variable name="connectionId">
+      <modifyParams style="template" name="connectionId" attribute="fixed" />
+    </variable>
+  </template>
+</application>
