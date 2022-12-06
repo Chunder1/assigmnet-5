@@ -1,0 +1,77 @@
+Screen2 As screen:
+
+    Button2 As button:
+        Height: =70
+        OnSelect: |-
+            =Launch("https://www.google.com/maps/place/" & Substitute(TextInput1.Text, " ", "+") & ",+" & TextInput2.Text & ",+" &TextInput3.Text) 
+        Size: =24
+        Text: ="Search"
+        Width: =280
+        X: =180
+        Y: =67
+        ZIndex: =1
+
+    TextInput1 As text:
+        Default: ="Address"
+        Height: =70
+        Size: =21
+        Width: =560
+        X: =40
+        Y: =207
+        ZIndex: =2
+
+    TextInput2 As text:
+        Default: =
+        Height: =70
+        Size: =21
+        Width: =560
+        X: =40
+        Y: =347
+        ZIndex: =3
+
+    TextInput3 As text:
+        Default: ="State"
+        Height: =70
+        Size: =21
+        Width: =560
+        X: =40
+        Y: =487
+        ZIndex: =4
+
+    Label4 As label:
+        Height: =70
+        Size: =21
+        Text: ="Address"
+        Width: =560
+        X: =40
+        Y: =137
+        ZIndex: =7
+
+    Label5 As label:
+        Height: =70
+        Size: =21
+        Text: ="City"
+        Width: =560
+        X: =40
+        Y: =277
+        ZIndex: =8
+
+    Label6 As label:
+        Height: =70
+        Size: =21
+        Text: ="State"
+        Width: =560
+        X: =40
+        Y: =417
+        ZIndex: =9
+
+    Label8 As label:
+        Height: =70
+        Size: =21
+        Text: |-
+            ="""https://www.google.com/maps/place/" & Substitute(TextInput1.Text, " ", "+") & ",+" & TextInput2.Text & ",+" &TextInput3.Text
+        Width: =560
+        X: =40
+        Y: =616
+        ZIndex: =10
+

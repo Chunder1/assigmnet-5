@@ -1,0 +1,43 @@
+Screen1 As screen:
+
+    Label1 As label:
+        Height: =70
+        Size: =21
+        Text: |-
+            ="Lattitude: " & Location.Latitude
+        Width: =560
+        X: =40
+        Y: =40
+        ZIndex: =1
+
+    Label2 As label:
+        Height: =70
+        Size: =21
+        Text: |-
+            ="Longitude: " & Location.Longitude
+        Width: =560
+        X: =40
+        Y: =123
+        ZIndex: =2
+
+    Button1 As button:
+        Height: =70
+        OnSelect: |-
+            =Launch("https://maps.googleapis.com/maps/api/staticmap?center=42.5121,-90.6928&zoom=18&size=600x600&key=AIzaSyDkkWVrrrkEu8lsY2gUXkjmC7yecTrxIxg&markers=color:red%7Clabel:A%7C42.5121,-90.6928")
+        Size: =24
+        Text: ="Button"
+        Width: =280
+        X: =180
+        Y: =293
+        ZIndex: =3
+
+    Image1 As image:
+        Height: =676
+        Image: |-
+            ="https://maps.googleapis.com/maps/api/staticmap?center=" & Location.Latitude & "," & Location.Longitude & "zoom=10&size=600x600&key=AIzaSyDkkWVrrrkEu8lsY2gUXkjmC7yecTrxIxg&markers=color:red%7Clabel:A%7C" & Location.Latitude & "," & Location.Longitude
+        OnSelect: |-
+            =Launch("http://www.google.com/maps/place/" & Location.Latitude & "," & Location.Longitude)
+        Width: =640
+        Y: =460
+        ZIndex: =4
+
